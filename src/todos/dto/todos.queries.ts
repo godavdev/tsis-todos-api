@@ -3,10 +3,12 @@ import { IsBoolean, IsOptional } from 'class-validator';
 
 export class ListTodosQuery {
   @IsOptional()
+  @IsBoolean()
   @Transform(({ value }) => {
     if (value === 'true') return true;
-    return false;
+    if (value === 'false') return false;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return value;
   })
-  @IsBoolean()
   completed?: boolean;
 }
