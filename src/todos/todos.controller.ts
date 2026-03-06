@@ -21,6 +21,7 @@ export class TodosController {
     return this.todosService.create(createTodoDto);
   }
 
+  // localhost:3000/todos?completed=true
   @Get()
   list(@Query() query: ListTodosQuery) {
     return this.todosService.list(query);
